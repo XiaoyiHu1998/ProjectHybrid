@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class ButtonActionTest : ButtonAction
+public class ButtonActionTest : MonoBehaviour
 {
     public Text text;
 
-    public override void LeftClick()
+    public void LeftClick()
     {
         text.text = "Status: LeftClick";
     }
 
-    public override void LeftClickRelease()
+    public void LeftClickRelease()
     {
         text.text = "Status: LeftClickRelease";
     }

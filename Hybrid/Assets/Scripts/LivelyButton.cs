@@ -1,21 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class LivelyButton : MonoBehaviour
 {
-    public RectTransform rectTransform;
-    public ButtonAction buttonAction;
+    RectTransform rectTransform;
+    public UnityEvent onClickEvents;
 
     float upperBound;
     float lowerBound;
     float leftBound;
     float rightBound;
 
-    bool clicked;
-
     void Start()
     {
+        rectTransform = gameObject.GetComponent<RectTransform>();
+        
         Vector3 position = rectTransform.position;
         float width = rectTransform.rect.width;
         float height = rectTransform.rect.height;
@@ -24,8 +27,6 @@ public class LivelyButton : MonoBehaviour
         lowerBound = (float)position.y - 0.5f * height;
         leftBound  = (float)position.x - 0.5f * width;
         rightBound = (float)position.x + 0.5f * width;
-
-        clicked = false;
     }
 
     private bool CheckMouseInBounds(Vector3 mousePosition)
@@ -37,21 +38,7 @@ public class LivelyButton : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && CheckMouseInBounds(Input.mousePosition))
         {
-            buttonAction.LeftClick();
-            clicked = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse1) && CheckMouseInBounds(Input.mousePosition))
-        {
-            buttonAction.RightClick();
-            clicked = true;
-        }
-        if (clicked && Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            buttonAction.LeftClickRelease();
-        }
-        if (clicked && Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            buttonAction.RightClickRelease();
+            onClickEvents.Invoke();
         }
     }
 }
