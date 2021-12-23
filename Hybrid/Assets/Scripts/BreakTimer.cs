@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BreakTimer : MonoBehaviour
 {
-    bool userBehindComputer;
-    double userWorkTime;
-    double userGoneTime;
-
+    public UnityEvent breakTimeEvent;
     public int breakIntervalMinutes; //Dont access this value in script, only in unity editor.
     private int breakIntervalSeconds { get { return breakIntervalMinutes * 60; } } //Easy conversion to seconds for internal use.
+    private bool userBehindComputer;
+    private double userWorkTime;
+    private double userGoneTime;
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class BreakTimer : MonoBehaviour
 
         if(userWorkTime >= breakIntervalSeconds)
         {
-            Debug.LogWarning("TODO: Implement breaktime popup and break time measuring system.");
+            breakTimeEvent.Invoke();
         }
     }
 
