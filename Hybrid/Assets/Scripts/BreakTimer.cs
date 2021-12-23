@@ -17,6 +17,8 @@ public class BreakTimer : MonoBehaviour
     public UnityEvent onPromptTimeLimit;
 
     //Dont access these values in script, only in unity editor.
+    public int minBreakTimeMinutes;
+    public int maxBreakTimeMinutes;
     public int breakIntervalMinutes;
     public int breakTimeMinutes;
     public int breakTimeIncrementMinutes;
@@ -35,7 +37,7 @@ public class BreakTimer : MonoBehaviour
     private bool showingPrompt;
     private BreakTimerMode mode;
 
-    //Timers
+    //Internal Timers
     private double userWorkTime;
     private double userBreakTime;
     private double userGoneTime;
@@ -97,6 +99,8 @@ public class BreakTimer : MonoBehaviour
         }
         else if(promptTime >= promptTimeLimitSeconds && showingPrompt)
         {
+            showingPrompt = false;
+            promptTime = 0;
             SkipBreak();
             onPromptTimeLimit.Invoke();
         }
@@ -118,13 +122,12 @@ public class BreakTimer : MonoBehaviour
     public void UserAway()
     {
         userBehindComputer = false;
+        userGoneTime = 0;
     }
 
     public void UserBack()
     {
         userBehindComputer = true;
-        userGoneTime = 0;
-        Debug.LogWarning("TODO: implement userWorkTime reduction based on userGoneTime");
     }
 
     public void AcceptBreak()
@@ -132,7 +135,7 @@ public class BreakTimer : MonoBehaviour
         showingPrompt = false;
         userWorkTime = 0;
         userBreakTime = 0;
-        breakIntervalMinutes += breakTimeIncrementMinutes;
+        breakIntervalMinutes = Mathf.Clamp(breakIntervalMinutes + breakTimeIncrementMinutes, minBreakTimeMinutes, maxBreakTimeMinutes);
 
         mode = BreakTimerMode.breakMode;
     }
@@ -146,7 +149,7 @@ public class BreakTimer : MonoBehaviour
     public void SkipBreak()
     {
         userWorkTime = 0;
-        breakIntervalMinutes -= breakTimeIncrementMinutes;
+        breakIntervalMinutes = Mathf.Clamp(breakIntervalMinutes - breakTimeIncrementMinutes, minBreakTimeMinutes, maxBreakTimeMinutes);
         mode = BreakTimerMode.workMode;
     }
 }
