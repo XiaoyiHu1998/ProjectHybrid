@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class BreakTimer : MonoBehaviour
 {
-    public UnityEvent breakTimeEvent;
+    public UnityEvent onBreaktime;
     public int breakIntervalMinutes; //Dont access this value in script, only in unity editor.
     private int breakIntervalSeconds { get { return breakIntervalMinutes * 60; } } //Easy conversion to seconds for internal use.
     private bool userBehindComputer;
@@ -33,7 +33,7 @@ public class BreakTimer : MonoBehaviour
 
         if(userWorkTime >= breakIntervalSeconds)
         {
-            breakTimeEvent.Invoke();
+            onBreaktime.Invoke();
         }
     }
 
