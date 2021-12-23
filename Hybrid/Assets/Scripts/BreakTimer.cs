@@ -15,6 +15,7 @@ public class BreakTimer : MonoBehaviour
     public UnityEvent onBreakStart;
     public UnityEvent onBreakEnd;
     public UnityEvent onPromptTimeLimit;
+    public UnityEvent onStartedWorkingForAwhile;
 
     //Dont access these values in script, only in unity editor.
     public int minBreakTimeMinutes;
@@ -24,6 +25,7 @@ public class BreakTimer : MonoBehaviour
     public int breakTimeIncrementMinutes;
     public int snoozeTimeMinutes;
     public int promptTimeLimitMinutes;
+    public int autoCloseBreakOverMinutes;
     public int maxAFKTimeSeconds;
 
     //Conversion to seconds for internal use.
@@ -31,10 +33,12 @@ public class BreakTimer : MonoBehaviour
     private int snoozeTimeSeconds { get { return snoozeTimeMinutes * 60; } }
     private int breakTimeSeconds { get { return breakTimeMinutes * 60; } }
     private int promptTimeLimitSeconds { get { return promptTimeLimitMinutes * 60; } }
+    private int autoCloseBreakOverSeconds { get { return autoCloseBreakOverMinutes * 60; } }
 
     //conditions
     private bool userBehindComputer;
     private bool showingPrompt;
+    private bool firedWorkingForAWhileEvent;
     private BreakTimerMode mode;
 
     //Internal Timers
@@ -42,12 +46,14 @@ public class BreakTimer : MonoBehaviour
     private double userBreakTime;
     private double userGoneTime;
     private double promptTime;
+    private double autoCloseBreakOver;
 
     void Start()
     {
         //conditions
         userBehindComputer = true;
         showingPrompt = false;
+        firedWorkingForAWhileEvent = false;
         mode = BreakTimerMode.workMode;
 
         //Timers
@@ -80,6 +86,7 @@ public class BreakTimer : MonoBehaviour
         else
         {
             userWorkTime += Time.deltaTime;
+            autoCloseBreakOver += Time.deltaTime;
             if (showingPrompt)
             {
                 promptTime += Time.deltaTime;
@@ -88,9 +95,8 @@ public class BreakTimer : MonoBehaviour
 
         if(userGoneTime >= maxAFKTimeSeconds)
         {
-            onBreakStart.Invoke();
+            AcceptBreak();
             userBreakTime += userGoneTime;
-            mode = BreakTimerMode.breakMode;
         }
         else if(userWorkTime >= breakIntervalSeconds && !showingPrompt)
         {
@@ -103,6 +109,11 @@ public class BreakTimer : MonoBehaviour
             promptTime = 0;
             SkipBreak();
             onPromptTimeLimit.Invoke();
+        }
+        if(autoCloseBreakOver >= autoCloseBreakOverSeconds && !firedWorkingForAWhileEvent)
+        {
+            onStartedWorkingForAwhile.Invoke();
+            firedWorkingForAWhileEvent = true;
         }
     }
 
@@ -133,9 +144,11 @@ public class BreakTimer : MonoBehaviour
     public void AcceptBreak()
     {
         showingPrompt = false;
+        firedWorkingForAWhileEvent = false;
         userWorkTime = 0;
         userBreakTime = 0;
         breakIntervalMinutes = Mathf.Clamp(breakIntervalMinutes + breakTimeIncrementMinutes, minBreakTimeMinutes, maxBreakTimeMinutes);
+        onBreakStart.Invoke();
 
         mode = BreakTimerMode.breakMode;
     }
@@ -148,6 +161,7 @@ public class BreakTimer : MonoBehaviour
 
     public void SkipBreak()
     {
+        showingPrompt = false;
         userWorkTime = 0;
         breakIntervalMinutes = Mathf.Clamp(breakIntervalMinutes - breakTimeIncrementMinutes, minBreakTimeMinutes, maxBreakTimeMinutes);
         mode = BreakTimerMode.workMode;
