@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CameraAnalizer : MonoBehaviour
 {
+    public UnityEvent leaveComputer;
+    public UnityEvent returnToComputer;
+
     //settings:
     public float noiseTreshold = 0.05f;
     public float movementTreshold = 35;
@@ -247,6 +251,10 @@ public class CameraAnalizer : MonoBehaviour
 
         if(atComputer != lastAtComputerState)
         {
+            if (atComputer)
+                leaveComputer.Invoke();
+            else
+                returnToComputer.Invoke();
             Debug.LogError("At computer state changed to: " + atComputer + " at " + ((int)Time.realtimeSinceStartup / 60) + ':' + (Mathf.Round(Time.realtimeSinceStartup) % 60));
         }
         lastAtComputerState = atComputer;
