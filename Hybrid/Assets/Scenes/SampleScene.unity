@@ -770,6 +770,7 @@ GameObject:
   - component: {fileID: 484271643}
   - component: {fileID: 484271642}
   - component: {fileID: 484271644}
+  - component: {fileID: 484271645}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -913,6 +914,58 @@ MonoBehaviour:
   promptTimeLimitMinutes: 2
   autoCloseBreakOverMinutes: 3
   maxAFKTimeSeconds: 90
+--- !u!114 &484271645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484271641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded01578ecd9f6f4c8ecdfdd63906530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatarName:
+    useConstant: 0
+    constantValue: 
+    variable: {fileID: 11400000, guid: 53f56ca852637194a983a8bb45d6af49, type: 2}
+  onSetAvatarName:
+    m_PersistentCalls:
+      m_Calls: []
+  avatarNameOptionsMale:
+  - Max
+  - Jake
+  - John
+  - Garry
+  - Edwin
+  - Will
+  - James
+  - Ethan
+  - David
+  - Luke
+  avatarNameOptionsFemale:
+  - Emma
+  - Sophie
+  - Linda
+  - Ella
+  - Charlotte
+  - Naomi
+  - Anna
+  - Julia
+  - Maria
+  - Ayla
+  avatarNameOptionsNonBinary:
+  - Clarke
+  - Jessie
+  - Robbie
+  - Riley
+  - Tyler
+  - Arden
+  - Shawn
+  - Charlie
+  - Reese
+  - Rory
 --- !u!1 &498127148
 GameObject:
   m_ObjectHideFlags: 0
