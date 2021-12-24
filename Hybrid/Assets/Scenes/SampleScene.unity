@@ -2355,6 +2355,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  returnToComputer:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 484271644}
         m_TargetAssemblyTypeName: BreakTimer, Assembly-CSharp
         m_MethodName: UserBack
@@ -2367,9 +2370,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  returnToComputer:
-    m_PersistentCalls:
-      m_Calls: []
   noiseTreshold: 0.05
   movementTreshold: 35
   useDefaultCamera: 1
