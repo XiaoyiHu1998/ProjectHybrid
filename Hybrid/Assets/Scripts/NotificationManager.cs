@@ -34,18 +34,14 @@ public class NotificationManager : MonoBehaviour
         AudioClip clip = clipDictionary[name];
         for(int i = 0; i < audioSources.Count; i++)
         {
-            if (audioSources[i].isPlaying)
-            {
-                continue;
-            }
-            else
+            if (!audioSources[i].isPlaying)
             {
                 audioSources[i].clip = clip;
                 audioSources[i].Play();
             }
         }
 
-        SetForegroundWindow(unityWindow);
+        //SetForegroundWindow(unityWindow);
     }
 
     public void SubscribeNotification(string name)
