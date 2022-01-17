@@ -31,7 +31,7 @@ public class peoplemanager : MonoBehaviour
         header = Instantiate(template, posbyid(0),Quaternion.identity);
         youtext = Instantiate(template, posbyid(1), Quaternion.identity);
         coworkertext = Instantiate(template, posbyid(3), Quaternion.identity);
-        yourworker = new Worker("yourname", posbyid(2), template, fontsize, this, sphereMaterial, true); 
+        yourworker = new Worker(ServerTest.Instance.username, posbyid(2), template, fontsize, this, sphereMaterial, true); 
     }
 
     // Update is called once per frame

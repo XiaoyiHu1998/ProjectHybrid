@@ -166,7 +166,7 @@ public class ServerTest : MonoBehaviour
         }
         foreach (string breakingClient in breakingClients)
         {
-            people.SetCoworkerOnline(breakingClient);
+            people.SetCoworkerBreak(breakingClient);
         }
         foreach (string offlineClient in offlineClients)
         {
