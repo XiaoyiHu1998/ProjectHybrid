@@ -16,8 +16,13 @@ public class ServerTest : MonoBehaviour
     static readonly string SpreadsheetId = "18sMDt3EbJkePeUkVRZx8J5IFbCT01eWH2Fy00AcYP-k";
     static SheetsService service;
     List<string> clients = new List<string>();
-    List<string> spawnedclients = new List<string>();
+    List<string> workingClients = new List<string>();
+    List<string> offlineClients = new List<string>();
+    List<string> breakingClients = new List<string>();
+
     public NotificationManager notifier;
+    public peoplemanager people;
+
     public string username;
     public GameObject Dummy;
     bool present = false;
@@ -142,12 +147,29 @@ public class ServerTest : MonoBehaviour
 
         foreach (string client in clients)
         {
-            if (!spawnedclients.Contains(client))
+            IList<IList<object>> list = ReadEntries(client, "A1:A1");
+            if (bool.Parse((string)list[0][0]))
             {
-                Instantiate(Dummy).name = client;
-                spawnedclients.Add(client);
+                workingClients.Add((string)list[0][0]);
+            }
+            else
+            {
+                breakingClients.Add((string)list[0][0]);
             }
         }
+        foreach (string workingClient in workingClients)
+        {
+            people.SetCoworkerOnline(workingClient);
+        }
+        foreach (string breakingClient in breakingClients)
+        {
+            people.SetCoworkerOnline(breakingClient);
+        }
+        foreach (string offlineClient in offlineClients)
+        {
+            people.SetCoworkerOffline(offlineClient);
+        }
+
         UpdateNotifications();
     }
 
@@ -174,14 +196,36 @@ public class ServerTest : MonoBehaviour
     void UpdateClients()
     {
         clients.Clear();
-        IList<IList<object>> list = ReadEntries("Server", "A1:A50");
+        offlineClients.Clear();
+        workingClients.Clear();
+        breakingClients.Clear();
 
+        IList<IList<object>> list = ReadEntries("Server", "A:A");
+        
         foreach (var item in list)
         {
-            if((string)item[0] != username)
+            string name = (string)item[0];
+            if(name != username)
             {
-                clients.Add(item[0].ToString());
+                if (!offlineClients.Contains(name))
+                {
+                    offlineClients.Add(name);
+                }
+
+
+                if (clients.Contains(name))
+                {
+                    clients.Remove(name);
+                }
+                else
+                {
+                    clients.Add(name);
+                }
             }
+        }
+        foreach (string client in clients)
+        {
+            offlineClients.Remove(client);
         }
     }
 
@@ -192,6 +236,12 @@ public class ServerTest : MonoBehaviour
         present = _present;
         var oblist = new List<object>() { present };
         UpdateEntry(username, "A1:A1", oblist);
+    }
+    
+    public void LogOff()
+    {
+        var oblist = new List<object>() { username };
+        CreateEntry("Server", "A:A", oblist);
     }
 
     public void PingNotification(string colleague)

@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum Status{
+    Working,
+    Break,
+    Offline
+}
+
 public class peoplemanager : MonoBehaviour
 {
     Worker yourworker;
@@ -66,39 +72,43 @@ public class peoplemanager : MonoBehaviour
     //Set Coworker online/offline indicator:
     public void SetCoworkerOnline(string name)
     {
-        SetCoWorkerOnlineStatus(name, true);
+        SetCoWorkerOnlineStatus(name, Status.Working);
     }
 
     public void SetCoworkerOffline(string name)
     {
-        SetCoWorkerOnlineStatus(name, false);
+        SetCoWorkerOnlineStatus(name, Status.Offline);
+    }
+
+    public void SetCoworkerBreak(string name)
+    {
+        SetCoWorkerOnlineStatus(name, Status.Break);
     }
 
     //Set users own online/ofline status
     public void SetYouOnline()
     {
-        SetYourOnlineStatus(true);
+        SetYourOnlineStatus(Status.Working);
     }
 
     public void SetYouOffline()
     {
-        SetYourOnlineStatus(false);
-        //TODO: remove yourself from each of the server sheets
+        SetYourOnlineStatus(Status.Offline);
     }
 
     //Gets called when clicking to notify a specific coworker
     public void OnSendNotificationToCoworker(string name)
     {
         Debug.LogError("notified " + name);
-        //TODO: Add notification code
+        ServerTest.Instance.PingNotification(name);
     }
 
-    private void SetYourOnlineStatus(bool status)
+    private void SetYourOnlineStatus(Status status)
     {
         yourworker.setOnlineStatus(status);
     }
 
-    private void SetCoWorkerOnlineStatus(string name, bool status)
+    private void SetCoWorkerOnlineStatus(string name, Status status)
     {
         foreach(Worker w in coworkers)
         {
@@ -180,19 +190,23 @@ public class Worker
         nameDisplay.text = name;
         nameDisplay.alignment = TextAlignmentOptions.Center;
 
-        setOnlineStatus(true);
+        setOnlineStatus(Status.Working);
     }
 
-    public void setOnlineStatus(bool status)
+    public void setOnlineStatus(Status status)
     {
-        behindComputer = status;
-        if(status)
-        {
-            onlineIndicator.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
-        }
-        else
-        {
-            onlineIndicator.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        switch(status){
+            case Status.Working:
+                onlineIndicator.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+                break;
+            case Status.Break:
+                onlineIndicator.GetComponent<Renderer>().material.SetColor("_Color", Color.yellow);
+                break;
+            case Status.Offline:
+                onlineIndicator.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+                break;
+            default:
+                break;
         }
     }
 
