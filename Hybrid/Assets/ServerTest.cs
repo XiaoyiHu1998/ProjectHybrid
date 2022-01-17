@@ -20,6 +20,8 @@ public class ServerTest : MonoBehaviour
     List<string> workingClients = new List<string>();
     List<string> offlineClients = new List<string>();
     List<string> breakingClients = new List<string>();
+    List<string> guiClients = new List<string>();
+
 
     public NotificationManager notifier;
     public peoplemanager people;
@@ -137,7 +139,7 @@ public class ServerTest : MonoBehaviour
         Data.BatchUpdateSpreadsheetResponse response = request.Execute();
         var oblist2 = new List<object>() { present };
         UpdateEntry(username, "A1:A1", oblist2);
-        InvokeRepeating("UpdateServer", 1f, 1f); 
+        InvokeRepeating("UpdateServer", 1f, 20f); 
     }
 
 
@@ -177,6 +179,10 @@ public class ServerTest : MonoBehaviour
     void UpdateNotifications()
     {
         IList<IList<object>> list = ReadEntries(username, "B:B");
+        if(list == null)
+        {
+            return;
+        }
         List<string> filteredlist = new List<string>();
         foreach (var item in list)
         {
@@ -211,6 +217,11 @@ public class ServerTest : MonoBehaviour
                 if (!offlineClients.Contains(name))
                 {
                     offlineClients.Add(name);
+                }
+                if (!guiClients.Contains(name))
+                {
+                    people.AddCoWorker(name);
+                    guiClients.Add(name);
                 }
 
 
