@@ -17,8 +17,8 @@ public class ServerTest : MonoBehaviour
     static SheetsService service;
     List<string> clients = new List<string>();
     List<string> spawnedclients = new List<string>();
-
-    public string usernametest;
+    public NotificationManager notifier;
+    public string username;
     public GameObject Dummy;
     bool present = false;
 
@@ -57,8 +57,7 @@ public class ServerTest : MonoBehaviour
             ApplicationName = ApplicationName,
         });
 
-        JoinServer(usernametest);
-        InitializeClient(usernametest);
+        JoinServer(username);
     }
 
     public IList<IList<object>> ReadEntries(string sheet, string inputrange)
@@ -131,18 +130,15 @@ public class ServerTest : MonoBehaviour
         SpreadsheetsResource.BatchUpdateRequest request = service.Spreadsheets.BatchUpdate(body, SpreadsheetId);
         Data.BatchUpdateSpreadsheetResponse response = request.Execute();
         var oblist2 = new List<object>() { present };
-        UpdateEntry(usernametest, "A1:A1", oblist2);
+        UpdateEntry(username, "A1:A1", oblist2);
+        InvokeRepeating("UpdateServer", 1f, 1f); 
     }
 
-    static void InitializeClient(string username)
-    {
-        //var oblist = new List<object>() { 0, 0, 0 };
-        //CreateEntry(username, "A:C", oblist);
-    }
 
-    void Update()
+
+    void UpdateServer()
     {
-        //UpdateClients();
+        UpdateClients();
 
         foreach (string client in clients)
         {
@@ -152,6 +148,27 @@ public class ServerTest : MonoBehaviour
                 spawnedclients.Add(client);
             }
         }
+        UpdateNotifications();
+    }
+
+    void UpdateNotifications()
+    {
+        IList<IList<object>> list = ReadEntries(username, "B:B");
+        List<string> filteredlist = new List<string>();
+        foreach (var item in list)
+        {
+            if ((string)item[0] != username)
+            {
+                if (!filteredlist.Contains((string)item[0]))
+                {
+                    filteredlist.Add((string)item[0]);
+                    notifier.NotifyBreak((string)item[0]);
+                }
+            }
+        }
+
+
+        DeleteEntry(username, "B:B");
     }
 
     void UpdateClients()
@@ -161,7 +178,7 @@ public class ServerTest : MonoBehaviour
 
         foreach (var item in list)
         {
-            if((string)item[0] != usernametest)
+            if((string)item[0] != username)
             {
                 clients.Add(item[0].ToString());
             }
@@ -174,7 +191,13 @@ public class ServerTest : MonoBehaviour
         Debug.Log(_present);
         present = _present;
         var oblist = new List<object>() { present };
-        UpdateEntry(usernametest, "A1:A1", oblist);
+        UpdateEntry(username, "A1:A1", oblist);
+    }
+
+    public void PingNotification(string colleague)
+    {
+        var oblist = new List<object>() { username };
+        CreateEntry(colleague, "B:B", oblist);
     }
 
 }
