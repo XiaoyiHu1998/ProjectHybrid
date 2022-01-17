@@ -18,6 +18,7 @@ public class peoplemanager : MonoBehaviour
     public Vector2 leftTopCorner;
     public TextMeshPro template;
     public float headerclearance;
+    public Material sphereMaterial;
     TextMeshPro header; 
     TextMeshPro youtext; 
     TextMeshPro coworkertext;
@@ -30,7 +31,7 @@ public class peoplemanager : MonoBehaviour
         header = Instantiate(template, posbyid(0),Quaternion.identity);
         youtext = Instantiate(template, posbyid(1), Quaternion.identity);
         coworkertext = Instantiate(template, posbyid(3), Quaternion.identity);
-        yourworker = new Worker("yourname", posbyid(2), template, fontsize, this, true); 
+        yourworker = new Worker("yourname", posbyid(2), template, fontsize, this, sphereMaterial, true); 
     }
 
     // Update is called once per frame
@@ -66,7 +67,7 @@ public class peoplemanager : MonoBehaviour
     //Add a coworker to the list:
     public void AddCoWorker(string name)
     {
-        coworkers.Add(new Worker(name, posbyid(coworkers.Count + 4), template, fontsize, this));
+        coworkers.Add(new Worker(name, posbyid(coworkers.Count + 4), template, fontsize, this, sphereMaterial));
     }
 
     //Set Coworker online/offline indicator:
@@ -164,13 +165,14 @@ public class Worker
     public bool notifyThisPerson;
     peoplemanager parent;
 
-    public Worker(string name, Vector3 position, TextMeshPro templat, int fontsize, peoplemanager parent, bool isYou = false)
+    public Worker(string name, Vector3 position, TextMeshPro templat, int fontsize, peoplemanager parent, Material sphereMaterial, bool isYou = false)
     {
         this.name = name;
         this.position = position;
         this.parent = parent;
 
         onlineIndicator = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        onlineIndicator.GetComponent<Renderer>().material = sphereMaterial;
         onlineIndicator.transform.position = position + new Vector3(-xoffset, 0, 0);
         onlineIndicator.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
 
