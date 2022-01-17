@@ -98,6 +98,10 @@ public class peoplemanager : MonoBehaviour
     {
         SetYourOnlineStatus(Status.Offline);
     }
+    public void SetYouBreak()
+    {
+        SetYourOnlineStatus(Status.Break);
+    }
 
     //Gets called when clicking to notify a specific coworker
     public void OnSendNotificationToCoworker(string name)

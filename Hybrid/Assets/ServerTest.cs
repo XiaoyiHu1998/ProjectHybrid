@@ -8,6 +8,7 @@ using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
 using Data = Google.Apis.Sheets.v4.Data;
+using Newtonsoft.Json;
 
 public class ServerTest : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class ServerTest : MonoBehaviour
     static readonly string ApplicationName = "cUUckedWallpaper";
     static readonly string SpreadsheetId = "18sMDt3EbJkePeUkVRZx8J5IFbCT01eWH2Fy00AcYP-k";
     static SheetsService service;
+    int? sheetId;
     List<string> clients = new List<string>();
     List<string> workingClients = new List<string>();
     List<string> offlineClients = new List<string>();
@@ -137,6 +139,28 @@ public class ServerTest : MonoBehaviour
         body.Requests = requests;
         SpreadsheetsResource.BatchUpdateRequest request = service.Spreadsheets.BatchUpdate(body, SpreadsheetId);
         Data.BatchUpdateSpreadsheetResponse response = request.Execute();
+
+        string spreadsheetId = "18sMDt3EbJkePeUkVRZx8J5IFbCT01eWH2Fy00AcYP-k";  // TODO: Update placeholder value.
+
+        // The ranges to retrieve from the spreadsheet.
+        List<string> ranges = new List<string>();  // TODO: Update placeholder value.
+
+        // True if grid data should be returned.
+        // This parameter is ignored if a field mask was set in the request.
+        bool includeGridData = false;  // TODO: Update placeholder value.
+
+        SpreadsheetsResource.GetRequest request2 = service.Spreadsheets.Get(spreadsheetId);
+        request2.Ranges = ranges;
+        request2.IncludeGridData = includeGridData;
+
+        // To execute asynchronously in an async method, replace `request.Execute()` as shown:
+        Data.Spreadsheet response2 = request2.Execute();
+        // Data.Spreadsheet response = await request.ExecuteAsync();
+
+        // TODO: Change code below to process the `response` object:
+   
+        sheetId = response2.Sheets[response2.Sheets.Count-1].Properties.SheetId;
+
         var oblist2 = new List<object>() { present };
         UpdateEntry(username, "A1:A1", oblist2);
         InvokeRepeating("UpdateServer", 1f, 20f); 
@@ -259,6 +283,26 @@ public class ServerTest : MonoBehaviour
     {
         var oblist = new List<object>() { username };
         CreateEntry("Server", "A:A", oblist);
+
+
+    
+
+        
+
+
+        List<Data.Request> requests = new List<Data.Request>();
+        Request Join = new Request();
+        SheetProperties properties = new SheetProperties();
+        DeleteSheetRequest sheet = new DeleteSheetRequest();
+        properties.Title = username;
+        sheet.SheetId = sheetId;
+        Join.DeleteSheet = sheet;
+        BatchUpdateSpreadsheetRequest body
+            = new BatchUpdateSpreadsheetRequest();
+        requests.Add(Join);
+        body.Requests = requests;
+        SpreadsheetsResource.BatchUpdateRequest request2 = service.Spreadsheets.BatchUpdate(body, SpreadsheetId);
+        Data.BatchUpdateSpreadsheetResponse response2 = request2.Execute();
     }
 
     public void PingNotification(string colleague)
@@ -267,4 +311,8 @@ public class ServerTest : MonoBehaviour
         CreateEntry(colleague, "B:B", oblist);
     }
 
+    private void OnApplicationQuit()
+    {
+        LogOff();
+    }
 }
