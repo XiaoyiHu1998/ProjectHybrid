@@ -83,12 +83,14 @@ public class peoplemanager : MonoBehaviour
     public void SetYouOffline()
     {
         SetYourOnlineStatus(false);
+        //TODO: remove yourself from each of the server sheets
     }
 
     //Gets called when clicking to notify a specific coworker
     public void OnSendNotificationToCoworker(string name)
     {
         Debug.LogError("notified " + name);
+        //TODO: Add notification code
     }
 
     private void SetYourOnlineStatus(bool status)
