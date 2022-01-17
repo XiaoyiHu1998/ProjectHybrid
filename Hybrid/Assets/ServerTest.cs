@@ -153,11 +153,14 @@ public class ServerTest : MonoBehaviour
             IList<IList<object>> list = ReadEntries(client, "A1:A1");
             if (bool.Parse((string)list[0][0]))
             {
-                workingClients.Add((string)list[0][0]);
+                workingClients.Add(client);
+                breakingClients.Remove(client);
+
             }
             else
             {
-                breakingClients.Add((string)list[0][0]);
+                workingClients.Remove(client);
+                breakingClients.Add(client);
             }
         }
         foreach (string workingClient in workingClients)
@@ -212,7 +215,8 @@ public class ServerTest : MonoBehaviour
         foreach (var item in list)
         {
             string name = (string)item[0];
-            if(name != username)
+            Debug.Log(name);
+            if (name != username)
             {
                 if (!offlineClients.Contains(name))
                 {
@@ -221,6 +225,7 @@ public class ServerTest : MonoBehaviour
                 if (!guiClients.Contains(name))
                 {
                     people.AddCoWorker(name);
+                    Debug.Log(name);
                     guiClients.Add(name);
                 }
 

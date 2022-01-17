@@ -74,6 +74,7 @@ public class peoplemanager : MonoBehaviour
     public void SetCoworkerOnline(string name)
     {
         SetCoWorkerOnlineStatus(name, Status.Working);
+        Debug.Log("Working");
     }
 
     public void SetCoworkerOffline(string name)
@@ -84,6 +85,7 @@ public class peoplemanager : MonoBehaviour
     public void SetCoworkerBreak(string name)
     {
         SetCoWorkerOnlineStatus(name, Status.Break);
+        Debug.Log(name);
     }
 
     //Set users own online/ofline status
@@ -203,6 +205,7 @@ public class Worker
                 break;
             case Status.Break:
                 onlineIndicator.GetComponent<Renderer>().material.SetColor("_Color", Color.yellow);
+                Debug.Log("Yellow");
                 break;
             case Status.Offline:
                 onlineIndicator.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
