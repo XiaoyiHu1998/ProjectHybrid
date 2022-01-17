@@ -2150,7 +2150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notifier: {fileID: 484271649}
   people: {fileID: 1748991782}
-  username: Lucas
+  username: Xiaoyi
   Dummy: {fileID: 6530777607594645076, guid: 6c22dc152531beb4db67839f74ada0e3, type: 3}
 --- !u!4 &1018851570
 Transform:
@@ -2534,7 +2534,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427091304}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2730,7 +2730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483265792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7649976, y: 17.310467, z: -49.645515}
+  m_LocalPosition: {x: 1.7649976, y: 17.310467, z: -1.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1943707302}
@@ -3674,7 +3674,7 @@ Transform:
   m_GameObject: {fileID: 1748991780}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -1.7649976, y: -17.310467, z: 49.645515}
-  m_LocalScale: {x: 3, y: 3, z: 5.6799994}
+  m_LocalScale: {x: 3.6840296, y: 3.1799998, z: 6.020799}
   m_Children: []
   m_Father: {fileID: 1483265793}
   m_RootOrder: 6
