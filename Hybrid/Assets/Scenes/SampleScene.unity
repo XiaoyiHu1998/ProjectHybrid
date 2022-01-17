@@ -631,19 +631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onClickEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1972168336}
-        m_TargetAssemblyTypeName: ButtonActionTest, Assembly-CSharp
-        m_MethodName: LeftClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &431985840
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,8 +778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c9f938b6cf2b14a8c04704efa5acd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 2040261393}
-  rayLength: 500
+  canvas: {fileID: 0}
+  rayLength: 0
 --- !u!4 &484271643
 Transform:
   m_ObjectHideFlags: 0
@@ -820,100 +808,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onBreaktime:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 89081317}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   onBreakStart:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1475179319}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   onBreakEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 717085295}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1475179319}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onPromptTimeLimit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 89081317}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onStartedWorkingForAwhile:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 717085295}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  minBreakTimeMinutes: 30
-  maxBreakTimeMinutes: 120
-  breakIntervalMinutes: 60
-  breakTimeMinutes: 5
-  breakTimeIncrementMinutes: 15
-  snoozeTimeMinutes: 10
-  promptTimeLimitMinutes: 2
-  autoCloseBreakOverMinutes: 3
-  maxAFKTimeSeconds: 90
+      m_Calls: []
+  minBreakTimeMinutes: 0
+  maxBreakTimeMinutes: 0
+  breakIntervalMinutes: 0
+  breakTimeMinutes: 0
+  breakTimeIncrementMinutes: 0
+  snoozeTimeMinutes: 0
+  promptTimeLimitMinutes: 0
+  autoCloseBreakOverMinutes: 0
+  maxAFKTimeSeconds: 0
 --- !u!114 &484271645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,43 +845,13 @@ MonoBehaviour:
   avatarName:
     useConstant: 0
     constantValue: 
-    variable: {fileID: 11400000, guid: 53f56ca852637194a983a8bb45d6af49, type: 2}
+    variable: {fileID: 0}
   onSetAvatarName:
     m_PersistentCalls:
       m_Calls: []
-  avatarNameOptionsMale:
-  - Max
-  - Jake
-  - John
-  - Garry
-  - Edwin
-  - Will
-  - James
-  - Ethan
-  - David
-  - Luke
-  avatarNameOptionsFemale:
-  - Emma
-  - Sophie
-  - Linda
-  - Ella
-  - Charlotte
-  - Naomi
-  - Anna
-  - Julia
-  - Maria
-  - Ayla
-  avatarNameOptionsNonBinary:
-  - Clarke
-  - Jessie
-  - Robbie
-  - Riley
-  - Tyler
-  - Arden
-  - Shawn
-  - Charlie
-  - Reese
-  - Rory
+  avatarNameOptionsMale: []
+  avatarNameOptionsFemale: []
+  avatarNameOptionsNonBinary: []
 --- !u!1 &498127148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,19 +972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onClickEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 717085295}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &617227559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1666,6 +1540,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1018851568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018851570}
+  - component: {fileID: 1018851569}
+  m_Layer: 0
+  m_Name: Server
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1018851569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018851568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 093ca85e122094e4da3060e4f34f9e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usernametest: Lucas
+  Dummy: {fileID: 6530777607594645076, guid: 6c22dc152531beb4db67839f74ada0e3, type: 3}
+--- !u!4 &1018851570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018851568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1059220779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,9 +1735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb3f502fae988643900750bbb774762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors:
-  - {r: 0.3915094, g: 0.6976659, b: 1, a: 1}
-  - {r: 1, g: 0.4292453, b: 0.4292453, a: 0}
+  colors: []
 --- !u!64 &1222300866
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1910,19 +1827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   livelyEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1222300865}
-        m_TargetAssemblyTypeName: planeMaterialColorSwitcherHandlerCommand, Assembly-CSharp
-        m_MethodName: IncrementColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1261689227
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,9 +1940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb3f502fae988643900750bbb774762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors:
-  - {r: 0.3915094, g: 0.6976659, b: 1, a: 1}
-  - {r: 1, g: 0.4292453, b: 0.4292453, a: 0}
+  colors: []
 --- !u!64 &1281183933
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2129,19 +2032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   livelyEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1281183932}
-        m_TargetAssemblyTypeName: planeMaterialColorSwitcherHandlerCommand, Assembly-CSharp
-        m_MethodName: IncrementColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1299906846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2254,9 +2145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb3f502fae988643900750bbb774762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors:
-  - {r: 0.3915094, g: 0.6976659, b: 1, a: 1}
-  - {r: 1, g: 0.4292453, b: 0.4292453, a: 0}
+  colors: []
 --- !u!64 &1314641735
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2348,19 +2237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   livelyEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1314641734}
-        m_TargetAssemblyTypeName: planeMaterialColorSwitcherHandlerCommand, Assembly-CSharp
-        m_MethodName: IncrementColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1427091304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,25 +2273,25 @@ MonoBehaviour:
   leaveComputer:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 484271644}
-        m_TargetAssemblyTypeName: BreakTimer, Assembly-CSharp
-        m_MethodName: UserAway
-        m_Mode: 1
+      - m_Target: {fileID: 1018851569}
+        m_TargetAssemblyTypeName: ServerTest, Assembly-CSharp
+        m_MethodName: TogglePresence
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   returnToComputer:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 484271644}
-        m_TargetAssemblyTypeName: BreakTimer, Assembly-CSharp
-        m_MethodName: UserBack
-        m_Mode: 1
+      - m_Target: {fileID: 1018851569}
+        m_TargetAssemblyTypeName: ServerTest, Assembly-CSharp
+        m_MethodName: TogglePresence
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2427,7 +2304,7 @@ MonoBehaviour:
   movementTreshold: 35
   useDefaultCamera: 1
   debugPrintDevices: 0
-  cameraToGray: 1
+  cameraToGray: 0
   negativesToBlack: 1
   moveFrPointer: 0
   atComputer: 0
@@ -2680,31 +2557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onClickEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 484271644}
-        m_TargetAssemblyTypeName: BreakTimer, Assembly-CSharp
-        m_MethodName: SnoozeBreak
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 89081317}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1507698333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2895,9 +2748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb3f502fae988643900750bbb774762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors:
-  - {r: 0.3915094, g: 0.6976659, b: 1, a: 1}
-  - {r: 1, g: 0.4292453, b: 0.4292453, a: 0}
+  colors: []
 --- !u!64 &1578941142
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2989,19 +2840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   livelyEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1578941141}
-        m_TargetAssemblyTypeName: planeMaterialColorSwitcherHandlerCommand, Assembly-CSharp
-        m_MethodName: IncrementColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1647065903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,19 +2970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onClickEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 717085295}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1699951180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3280,19 +3107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onClickEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 717085295}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1730923853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3508,31 +3323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onClickEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 484271644}
-        m_TargetAssemblyTypeName: BreakTimer, Assembly-CSharp
-        m_MethodName: AcceptBreak
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 89081317}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1825324444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3669,31 +3460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onClickEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 484271644}
-        m_TargetAssemblyTypeName: BreakTimer, Assembly-CSharp
-        m_MethodName: SkipBreak
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 89081317}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1946518919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3943,7 +3710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510441d0a53cfcb49ab81a9a34783dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 1972168334}
+  text: {fileID: 0}
 --- !u!1 &1980118456
 GameObject:
   m_ObjectHideFlags: 0
