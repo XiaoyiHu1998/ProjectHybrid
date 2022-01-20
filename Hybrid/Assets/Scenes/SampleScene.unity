@@ -1427,10 +1427,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 17b80c725d2debe4982d0de8345af36a, type: 3}
   - {fileID: 8300000, guid: 17b80c725d2debe4982d0de8345af36a, type: 3}
   - {fileID: 8300000, guid: 17b80c725d2debe4982d0de8345af36a, type: 3}
+  - {fileID: 8300000, guid: 17b80c725d2debe4982d0de8345af36a, type: 3}
+  - {fileID: 8300000, guid: 17b80c725d2debe4982d0de8345af36a, type: 3}
   names:
   - Xiaoyi
   - Test
   - Lucas
+  - Artur
+  - Mischa
 --- !u!1 &498127148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,7 +2250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notifier: {fileID: 484271649}
   people: {fileID: 1748991782}
-  username: Lucas
+  username: Xiaoyi
   Dummy: {fileID: 6530777607594645076, guid: 6c22dc152531beb4db67839f74ada0e3, type: 3}
 --- !u!4 &1018851570
 Transform:
